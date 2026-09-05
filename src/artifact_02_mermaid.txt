@@ -1,0 +1,41 @@
+flowchart TD
+    subgraph ClientLayer["Sender (Agent or Client)"]
+        A1[Construct Action Payload] --> A2[Compute Payload SHA256]
+        A2 --> A3[Derive Recipient Mailbox PDA]
+        A3 --> A4[Call send_message Instruction]
+    end
+
+    subgraph SolanaRuntime["Solana On-Chain Core (mermail_core)"]
+        A4 --> B1{Validate Signer & Rent}
+        B1 -- Success --> B2[Initialize Message PDA<br/>seeds: message, mailbox, seq_num]
+        B2 --> B3[Lock Execution Escrow / Bounty in PDA]
+        B3 --> B4[Increment Mailbox Sequence Counter]
+        B4 --> B5[Emit MessageSentEvent]
+    end
+
+    subgraph AgentWorker["Autonomous Agent (Mermail Skill Runtime)"]
+        B5 -.->|Geyser / WebSocket Event| C1[Mermail Listener]
+        C1 --> C2[Fetch Message Account State]
+        C2 --> C3{Validate Deadline & Hash}
+        C3 -- Invalid --> C4[Halt / Log Anomaly]
+        C3 -- Valid --> C5[Parse Action Envelope & Build CPIs]
+        C5 --> C6[Sign & Submit execute_action]
+    end
+
+    subgraph ExecutionVerification["Execution & Settlement Pipeline"]
+        C6 --> D1{Is Assigned Recipient?}
+        D1 -- No --> D2[Revert: Unauthorized]
+        D1 -- Yes --> D3{Is Clock::now <= Deadline?}
+        D3 -- No --> D4[Revert: MessageExpired]
+        D3 -- Yes --> D5{Payload Hash Matches?}
+        D5 -- No --> D6[Revert: HashMismatch]
+        D5 -- Yes --> D7[Execute Target Action / CPI]
+        D7 --> D8[Transfer Escrowed Bounty to Agent]
+        D8 --> D9[Close Message PDA -> Return Rent to Sender]
+        D9 --> D10[Emit ActionExecutedEvent]
+    end
+
+    style SolanaRuntime fill:#1a1a2e,stroke:#16213e,stroke-width:2px,color:#fff
+    style AgentWorker fill:#0f3460,stroke:#e94560,stroke-width:2px,color:#fff
+    style ExecutionVerification fill:#16213e,stroke:#0f3460,stroke-width:2px,color:#fff
+    style ClientLayer fill:#1e2022,stroke:#52616b,stroke-width:2px,color:#fff

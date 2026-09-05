@@ -1,0 +1,8 @@
+Mermail Protocol Test Suite
+    ✔ QA-01: Initializes agent mailbox with zeroed counters (124ms)
+    ✔ QA-02: Dispatches action message with locked SOL bounty (412ms)
+    ✔ QA-03: Rejects execution if payload hash does not match on-chain commitment (88ms)
+    ✔ QA-04: Successfully verifies payload, executes action, and disburses bounty (390ms)
+    ✔ QA-05: Reverts unauthorized attempt to settle an already executed message (65ms)
+
+  5 passing (1.08s)

@@ -1,0 +1,12 @@
+[Sender Agent / Human]
+       │  (Encrypted Action Intent + Execution Escrow)
+       ▼
+[Mermail Solana Program] ──(PDA Escrow & Action Envelope)──┐
+       │                                                   │
+   Solana Event Bus (CPI / Log)                            │ Verifiable
+       │                                                   │ Execution
+       ▼                                                   │ CPI
+[Mermail Agent Skill (TypeScript/ElizaOS)]                 │
+  ├── Polling / Geyser / WebSocket Listener                │
+  ├── Decryption & Intent Parsing Engine                   │
+  └── Atomic Execution Transaction Construction ───────────┘

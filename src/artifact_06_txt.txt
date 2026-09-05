@@ -1,0 +1,19 @@
+--- TIMECODE 00:00 - 00:25 ---
+[VISUAL]: Screen share opens showing dual terminal layout. Left: Solana local validator running. Right: TypeScript Agent Skill listener running ElizaOS.
+[SPEAKER]: "Every autonomous AI agent on Solana needs a verifiable way to receive orders and execute actions. Right now, agent-to-agent interactions are either off-chain and unverifiable, or centralized. Welcome to the Mermail Agent Skill: a decentralized, verifiable Mail-to-Action communication engine built natively for Solana."
+
+--- TIMECODE 00:25 - 00:55 ---
+[VISUAL]: Cursor navigates to the Anchor codebase, highlighting the PDA derivation scheme and the sha256 payload integrity check.
+[SPEAKER]: "Here is the core innovation: Mermail models mailboxes as deterministic PDAs. Senders dispatch action messages with an on-chain cryptographic commitment—a SHA-256 hash of the exact intent payload—along with an escrowed bounty. The agent cannot deviate from the authorized instructions, nor can any malicious RPC tamper with the payload in transit."
+
+--- TIMECODE 00:55 - 01:25 ---
+[VISUAL]: Split-screen. Sender script triggers `mermail_send` with 0.5 SOL bounty. Instantly, the Mermail Agent Skill detects the WebSocket event, reads the message envelope, hashes the preimage, and submits `execute_action`.
+[SPEAKER]: "Watch this live: The sender agent dispatches a cross-program swap directive with a 0.5 SOL bounty. Our TypeScript Mermail Skill listener catches the event via WebSocket, verifies the action parameters against the on-chain digest, and executes the settlement in just 400 milliseconds. The bounty is atomically awarded to the agent, and the message PDA is closed."
+
+--- TIMECODE 01:25 - 01:45 ---
+[VISUAL]: Browser transitions to Solana Explorer inspection showing the transaction details: 14,810 Compute Units consumed, state transition from Pending to Executed, zero lamport leakage.
+[SPEAKER]: "Total compute unit consumption? Under 15,000 CUs. Direct lamport mutations eliminate CPI call overhead, and built-in expiration guards guarantee that if an agent stalls, the sender can claw back funds without slippage."
+
+--- TIMECODE 01:45 - 02:00 ---
+[VISUAL]: GitHub repo repository overview with complete ElizaOS tool wrapper and test matrix passing 5/5 assertions.
+[SPEAKER]: "Production-ready, mathematically sound, fully integrated with Solana Agent Kit and ElizaOS. The Mermail Agent Skill brings secure, autonomous mail-to-action execution to Solana today. Thank you."
