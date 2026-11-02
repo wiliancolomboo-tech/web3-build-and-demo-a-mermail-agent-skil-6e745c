@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  mermail-agent-skill:
+    build:
+      context: ./agent-skill
+      dockerfile: Dockerfile
+    container_name: mermail_agent_runtime
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - PROGRAM_ID=MermAiL111111111111111111111111111111111111
+      - AGENT_PRIVATE_KEY=${AGENT_PRIVATE_KEY}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - AGENT_EMAIL_DOMAIN=agent.mermail.xyz
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - AUTHORITY_PUBKEY=${AUTHORITY_PUBKEY}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

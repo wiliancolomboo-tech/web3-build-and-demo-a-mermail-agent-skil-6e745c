@@ -1,0 +1,7 @@
+Built for speed & security on @solana:
+⚡️ Anchors action intents on an on-chain Anchor protocol PDA
+🔒 Signs verifiable DKIM/Ed25519 one-click approval links
+📬 Ships interactive, dynamic emails straight to Gmail/Outlook via @resend
+🛡️ Zero-spoofing cryptographic replay protection
+
+Inbound clicks settle on-chain in real-time.

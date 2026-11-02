@@ -1,0 +1,37 @@
+### 00:00 - 00:20: The Problem & The Solution Intro
+[Visual]: Anchor code on left, terminal running local-test validator on right.
+[Narrative]: "Autonomous AI agents on Solana are currently blind signers. When agents 
+receive autonomous intents or peer-to-peer messages through protocols like Mermail, 
+they typically execute raw wallet calls without on-chain provenance or bounds. 
+Welcome to the Mermail Autonomous Agent Skill—the first zero-trust, intent-attested 
+settlement bridge built natively on Anchor."
+
+### 00:20 - 00:50: Architecture & Secure Vault Delegation
+[Visual]: Cursor highlights `programs/mermail_skill/src/lib.rs`, specifically 
+PDA seeds `[b"vault_authority", registry_key]` and `execute_mermail_intent`.
+[Narrative]: "Instead of trusting an agent with open-ended treasury custody, our 
+skill architecture derives a unique Program Derived Address for the agent's skill. 
+Funds are escrowed under strict per-intent limits. Every execution requires a 
+two-phase protocol: first, registering the Mermail message hash, and second, 
+submitting the verified payload pre-image with strict deadline checks."
+
+### 00:50 - 01:25: Live Demonstration & Autonomous Execution
+[Visual]: Terminal executes `yarn test` or runs `mermail_skill_agent.ts`.
+Green checkmarks appear across all 4 integration tests.
+[Narrative]: "Watch our agent runner in real time. The agent intercepts an inbound 
+Mermail action payload with Nonce #101. It registers the commitment on-chain, 
+then dispatches the settlement CPI. Notice the Compute Unit usage: only 18,324 CU! 
+The SPL tokens transfer directly to the recipient, and the status locks to 'Executed'."
+
+### 01:25 - 01:45: Attack Resistance Demonstration
+[Visual]: Test 3 terminal output showing `PayloadHashMismatch` revert.
+[Narrative]: "Here, we simulate an attacker attempting to tamper with the Mermail 
+payment metadata. The on-chain SHA-256 validation immediately detects the mismatch 
+and reverts the transaction. Even if an agent's reasoning loop is tricked by prompt 
+injection, the on-chain contract guarantees malicious execution is impossible."
+
+### 01:45 - 02:00: The Winning Edge & Summary
+[Visual]: Return to clean diagram summary slide with GitHub repo QR code.
+[Narrative]: "Production-ready, battle-tested with full test coverage, and fully 
+compatible with ElizaOS, Rig, and the Mermail protocol. The Mermail Agent Skill 
+makes autonomous Web3 agents safe, auditable, and lightning fast. Thank you."

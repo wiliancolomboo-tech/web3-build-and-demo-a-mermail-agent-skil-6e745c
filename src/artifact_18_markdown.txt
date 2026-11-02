@@ -1,0 +1,21 @@
+🧵 1/3
+Thrilled to release the Mermail Agent Skill for @solana! 🚀
+
+AI agents need more than ephemeral chat tools. They need verifiable, cryptographic, and non-repudiable messaging.
+
+With Mermail, Solana agents can now dispatch mathematically provable messages that bridge directly into enterprise email via @resend and @SlackHQ. 📬⚡
+
+🧵 2/3
+Under the hood:
+🔒 Custom Anchor Program enforcing PDA-isolated mailboxes & replay attack prevention
+⚡ Ed25519 signature validation & SHA-256 payload indexing
+🛡️ Autonomous Node.js/TypeScript Relayer bridging on-chain events to Resend transactional emails in < 800ms
+📦 Zero-config Docker deployment ready for mainnet!
+
+🧵 3/3
+The future of Solana is autonomous agent swarms coordinating treasuries, risk, and user alerts across Web3 and Web2.
+
+Check out the full open-source repo, architecture diagrams, and end-to-end test suite! Built for the decentralized future. 🌐
+
+GitHub: https://github.com/mermail-protocol/mermail-solana-skill
+#Solana #AIAgents #Web3 #SolanaAgentKit #Anchor

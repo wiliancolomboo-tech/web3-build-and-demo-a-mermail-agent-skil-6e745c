@@ -1,0 +1,8 @@
+{
+  "status": "UP",
+  "uptimeSeconds": 86400,
+  "cluster": "devnet",
+  "mailboxPda": "Fk8m...j9a",
+  "escrowVaultBalanceLamports": 10000000,
+  "queueDepth": 0
+}

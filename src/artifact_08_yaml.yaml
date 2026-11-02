@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mermail-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-skill
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - MERMAIL_PROGRAM_ID=MermAiL111111111111111111111111111111111111
+      - RESEND_API_KEY=re_live_enterprise_secret
+      - SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+      - AGENT_KEYPAIR_PATH=/app/keys/agent.json
+    volumes:
+      - ./keys:/app/keys:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/healthz"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s

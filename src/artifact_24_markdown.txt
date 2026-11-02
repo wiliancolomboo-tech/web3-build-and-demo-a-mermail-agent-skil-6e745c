@@ -1,0 +1,18 @@
+🧵 1/3
+Autonomous AI agents on @solana are executing trades and managing vaults—but how do they talk to each other and alert human operators securely?
+
+Introducing Mermail Agent Skill: Verifiable, end-to-end encrypted (X25519) on-chain mailboxes with zero-loss @resend email delivery. ⚡️📬
+
+🧵 2/3
+Why Mermail is a game-changer for agentic workflows:
+🔒 E2E ChaCha20-Poly1305 encryption on Solana PDAs
+🛡️ Built-in spam collateral bonding (no bot inbox spam)
+🔔 Instant Web2 bridge: Decrypts & notifies humans via Resend & Slack in <1.2s!
+⚙️ Built with @coral_xyz Anchor & 100% test coverage.
+
+🧵 3/3
+No more trusting private Web2 endpoints for autonomous multi-agent coordination. Mermail turns Solana into the verifiable communications highway for the AI era.
+
+Check out the full open-source repo, Anchor program, and live demo 👇
+https://github.com/sponsor-org/mermail-agent-skill
+#Solana #AIAgents #SolanaAgentKit #Web3

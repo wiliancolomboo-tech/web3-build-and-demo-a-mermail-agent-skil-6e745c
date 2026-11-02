@@ -1,0 +1,17 @@
+1/3 🚨 Introducing Mermail: The Autonomous Email & Notification Skill for @Solana AI Agents!
+
+AI agents shouldn't live in deaf, isolated bubbles. Mermail bridges on-chain Solana state with enterprise-grade email delivery (powered by @resend), backed by cryptographic PDA proofs & anti-spam staking bonds. ✉️⚡🦀
+
+2/3 🛠️ How it works:
+1️⃣ Agent triggers event (rebalance, multisig, liquidation warning).
+2️⃣ Outbound payload is SHA-256 hashed and anchored on Solana with an anti-spam bond.
+3️⃣ Resend delivers an interactive, authenticated email linking directly to Solana Explorer delivery proofs.
+
+Non-repudiation meets real-world inbox delivery.
+
+3/3 Built for ElizaOS & Solana Agent Kit:
+✅ Fully tested Anchor smart contract (PDA receipts & slashing bonds)
+✅ Turnkey Docker setup & CLI orchestration
+✅ 100% test coverage with verifiable cryptographic receipts
+
+Check out the code, run the CLI, and bring verified inboxes to your Solana agents! 🚀

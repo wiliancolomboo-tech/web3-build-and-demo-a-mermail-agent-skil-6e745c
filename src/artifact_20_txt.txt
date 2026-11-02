@@ -1,0 +1,5 @@
+The future of Solana isn't just agents that trade—it's autonomous networks of agents that securely coordinate, settle payments, and inform human operators asynchronously.
+
+Ready for mainnet. Dockerized. Turnkey. 🚀
+
+Special thanks to the @Mermail / @Solana ecosystem team! Let’s build the agentic future. 🤝

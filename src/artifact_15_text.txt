@@ -1,0 +1,10 @@
+Full production repo is live:
+⚡ Complete Anchor smart contract with staking & slashing
+⚡ Solana Agent Kit / ElizaOS skill plugin
+⚡ Turnkey Docker orchestration + Mocha QA test suite
+
+Say goodbye to unverified bot pings. Welcome to institutional agentic alerts.
+
+Check out the code & demo: https://github.com/mermail-agent-skill/solana-sentinel
+
+cc @Solana @Mermail @SuperteamDAO 🚀

@@ -1,0 +1,11 @@
+# Solana Network Settings
+SOLANA_RPC_URL=https://api.devnet.solana.com
+AGENT_SOLANA_PRIVATE_KEY=4Zt...[Base58 Encoded 64-byte Private Key]
+
+# Enterprise Bridge (Resend)
+RESEND_API_KEY=re_123456789abcdef
+RESEND_FROM_EMAIL=mermail@notifications.enterprise.com
+OPERATOR_ALERT_EMAIL=security-lead@enterprise.com
+
+# Webhook Integrations
+ENTERPRISE_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder

@@ -1,0 +1,4 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+RESEND_API_KEY=re_live_enterprise_secret_key
+SENDER_EMAIL=notifications@your-verified-domain.com
+TREASURY_PUBKEY=9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM

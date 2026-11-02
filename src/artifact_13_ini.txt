@@ -1,0 +1,7 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_KEYPAIR_PATH=/app/keys/id.json
+MERMAIL_PROGRAM_ID=MermA11111111111111111111111111111111111111
+RESEND_API_KEY=re_enterprise_live_key_here
+SENDER_EMAIL=agent@notifications.mermail.io
+SLACK_WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder
+PORT=8080

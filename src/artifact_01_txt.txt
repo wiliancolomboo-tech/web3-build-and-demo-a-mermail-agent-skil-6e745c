@@ -1,12 +1,11 @@
-[Sender Agent / Human]
-       │  (Encrypted Action Intent + Execution Escrow)
-       ▼
-[Mermail Solana Program] ──(PDA Escrow & Action Envelope)──┐
-       │                                                   │
-   Solana Event Bus (CPI / Log)                            │ Verifiable
-       │                                                   │ Execution
-       ▼                                                   │ CPI
-[Mermail Agent Skill (TypeScript/ElizaOS)]                 │
-  ├── Polling / Geyser / WebSocket Listener                │
-  ├── Decryption & Intent Parsing Engine                   │
-  └── Atomic Execution Transaction Construction ───────────┘
+Web2 Inbound/Outbound                     On-Chain Solana Layer
+ [Enterprise Email via Resend API]           [mermail_core Anchor Program]
+                │                                          ▲
+                ▼                                          │
+    [Mermail Agent Skill Worker] ◄──────── cryptographic ──┘
+       - Ed25519 Proof Verification         State Commitments
+       - Spam Bond Settlement               PDA Mailboxes
+       - Autonomous Decision Engine         Action Escrow Settlement
+                │
+                ▼
+ [Slack Ops Webhook / Emergency Handoff]

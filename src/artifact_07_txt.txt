@@ -1,0 +1,9 @@
++------------------------------------+-------------------------------------+----------------+
+| Test Suite / Target                | Test Conditions Checked             | Result Expect. |
++------------------------------------+-------------------------------------+----------------+
+| anchor_test::init_agent            | Valid seeds, PDA allocation         | PASS (200 OK)  |
+| anchor_test::record_dispatch       | Nonce monotonicity, SHA256 matches  | PASS (200 OK)  |
+| anchor_test::unauthorized_ack      | Impersonated authority rejects      | REVERT (0x1778)|
+| unit_test::signature_verification  | Ed25519 signature tamper-resistance | PASS (100%)    |
+| unit_test::dual_rail_fallback      | Mermail failure -> Resend triggered | PASS (100%)    |
++------------------------------------+-------------------------------------+----------------+

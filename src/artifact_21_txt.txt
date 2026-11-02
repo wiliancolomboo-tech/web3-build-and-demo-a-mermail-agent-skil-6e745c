@@ -1,0 +1,9 @@
+Built for enterprise agent workflows: SOC2 compliance, human-in-the-loop approvals, and instant alert escalation.
+
+📦 Turnkey Docker relayer
+🦀 Pure Rust Anchor program
+🛠️ Plug-and-play Agent Skill
+
+Check out the full open-source repo & live demo here: github.com/solana-bounties/mermail-agent-skill
+
+#Solana #AIAgents #Web3 #BuildInPublic @SendAI_ @solana

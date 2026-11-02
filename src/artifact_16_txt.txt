@@ -1,0 +1,8 @@
+Unlike naive webhooks, every Mermail outbound dispatch is backed by an @anchorlang escrow program:
+
+1️⃣ Agent creates on-chain intent + locks bounty PDA
+2️⃣ Dispatches via @resend & enterprise audit streams
+3️⃣ Oracle verifies RFC delivery receipts & settles SOL bounties
+4️⃣ Zero-loss timeout refunds
+
+Verifiable Web3 <> Web2 communication.

@@ -1,0 +1,7 @@
+{
+    "status": "HEALTHY",
+    "agent_pubkey": "AgentPubkey111111111111111111111111111111111",
+    "mailbox_pda": "MailboxPDA111111111111111111111111111111111",
+    "processed_count": 42,
+    "uptime_seconds": 18420
+  }

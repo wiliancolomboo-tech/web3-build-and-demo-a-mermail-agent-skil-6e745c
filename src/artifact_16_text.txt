@@ -1,0 +1,7 @@
+🚨 Autonomous AI agents have a massive barrier: Enterprise ops run on email, while agents live on-chain.
+
+Introducing @Mermail_App Skill on @Solana 📬⚡️
+
+A verified, non-custodial communication & automated settlement skill connecting LLMs, @Resend, & Anchor smart contracts.
+
+Here's how we built it 🧵👇

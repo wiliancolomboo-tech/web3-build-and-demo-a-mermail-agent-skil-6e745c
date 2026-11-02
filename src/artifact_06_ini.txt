@@ -1,0 +1,15 @@
+# Solana Network Settings
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_CLUSTER=devnet
+MERMAIL_PROGRAM_ID=Merm111111111111111111111111111111111111111
+
+# Agent Identity Keypair (JSON array of 64 bytes)
+AGENT_PRIVATE_KEY=[12,45,212,...]
+
+# Enterprise Bridge (Resend API)
+RESEND_API_KEY=re_1234567890abcdef
+RESEND_ALERT_RECIPIENT=devops-alerts@mermail.enterprise
+
+# Daemon Port & Telemetry
+PORT=8080
+METRICS_ENABLED=true

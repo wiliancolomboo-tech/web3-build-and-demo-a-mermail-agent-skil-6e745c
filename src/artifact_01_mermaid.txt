@@ -1,0 +1,39 @@
+flowchart TD
+    subgraph Enterprise Clients & Users
+        Sender[Enterprise Client / Stakeholder]
+        EmailClient[Standard Email / Webhook / Resend]
+    end
+
+    subgraph Mermail Edge Worker
+        Ingress[Mermail Ingress Webhook Controller]
+        DKIM[Cryptographic DKIM & SPF Validator]
+        Parser[Agent NLP Intent Engine]
+    end
+
+    subgraph Solana Runtime Engine
+        RPC[Solana RPC Node - Mainnet/Devnet]
+        Program[Mermail Core Anchor Program]
+        MailboxPDA[Mailbox State PDA]
+        AttestationPDA[Attestation Log PDA]
+        EscrowPDA[Spam Prevention Escrow PDA]
+    end
+
+    subgraph Outbound Enterprise Relays
+        Skill[Mermail Agent Skill Executor]
+        ResendAPI[Resend Enterprise Mail API]
+        AuditHook[Enterprise Security Slack/Discord Webhook]
+    end
+
+    Sender -->|Inbound Command / Trigger| EmailClient
+    EmailClient -->|Signed Webhook Payload| Ingress
+    Ingress -->|Verify Signature| DKIM
+    DKIM -->|Parse Prompt & Payload| Parser
+    Parser -->|Check Sender State & Quotas| Program
+    Program -->|Fetch Whitelist & Staking State| MailboxPDA
+    
+    Parser -->|Execute On-Chain Action| Skill
+    Skill -->|1. Commit Attestation TX| Program
+    Program -->|Store Hash & Timestamp| AttestationPDA
+    Skill -->|2. Dispatch Validated Message| ResendAPI
+    ResendAPI -->|Outbound Email Delivery| Sender
+    Skill -->|3. Mirror Real-Time Audit| AuditHook

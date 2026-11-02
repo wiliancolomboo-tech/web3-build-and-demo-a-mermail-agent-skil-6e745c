@@ -1,0 +1,5 @@
+Autonomous Solana AI agents manage $100M+ in liquidity, but how do they reliably communicate with human custodians when an exploit or liquidation occurs?
+
+Introducing the Mermail Agent Skill for @Solana. 
+
+The first cryptographically certified, on-chain email bridge for AI agents. 🧵👇

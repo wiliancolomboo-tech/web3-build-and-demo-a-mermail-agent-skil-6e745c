@@ -1,0 +1,9 @@
+mermail-agent-skill/
+├── package.json
+├── tsconfig.json
+├── src/
+│   ├── idl/mermail_core.json
+│   ├── MermailAgentSkill.ts
+│   ├── EnterpriseRelayer.ts
+│   └── cli.ts
+└── .env.example

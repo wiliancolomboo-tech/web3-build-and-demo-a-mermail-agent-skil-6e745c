@@ -1,0 +1,7 @@
+How it works under the hood:
+
+1️⃣ Enterprise dispatchers post encrypted intents to a Solana Mailbox PDA with an escrowed SOL bounty.
+2️⃣ The Mermail Agent Skill picks up the intent, validates monotonic nonces, executes the Solana payload, and marks settlement on-chain.
+3️⃣ Resend dispatches a verified DKIM email receipt with Solana Explorer proof to compliance teams.
+
+Zero replay vectors. 100% deterministic.

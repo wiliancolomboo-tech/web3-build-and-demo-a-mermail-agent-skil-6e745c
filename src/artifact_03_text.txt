@@ -1,0 +1,8 @@
+contracts/mermail-gateway/
+├── Anchor.toml
+├── Cargo.toml
+└── programs/
+    └── mermail-gateway/
+        ├── Cargo.toml
+        └── src/
+            └── lib.rs

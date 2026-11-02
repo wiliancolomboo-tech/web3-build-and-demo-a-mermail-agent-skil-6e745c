@@ -1,0 +1,7 @@
+Mermail Protocol Test Matrix
+    ✔ QA-01: Successfully Initializes Agent B Mailbox & Registry (185ms)
+    ✔ QA-02: Dispatches Bonded, Encrypted Intent from Agent A to Agent B (312ms)
+    ✔ QA-03: Fails when spam bond is lower than recipient threshold (84ms)
+    ✔ QA-04: Recipient Agent B Acknowledges Message and Refunds Bond (298ms)
+
+  4 passing (920ms)

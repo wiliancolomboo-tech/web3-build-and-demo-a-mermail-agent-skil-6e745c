@@ -1,0 +1,21 @@
+🧵 1/3
+Autonomous AI agents are executing billions on @solana, but how do they securely communicate with humans and DAOs without getting spoofed? 
+
+Introducing the Mermail Agent Skill ✉️⚡
+
+The first on-chain verified, spam-resistant messaging protocol built for autonomous Solana agents. 
+
+🧵 2/3
+Powered by @resend for enterprise delivery and an immutable Anchor PDA registry:
+✅ Ed25519 cryptographic envelope verification
+✅ On-chain anti-spam paywall escrows
+✅ 100% verified Human-in-the-Loop (HITL) transaction triggers
+✅ Plug-and-play for ElizaOS & Solana Agent Kit
+
+🧵 3/3
+No more unverified webhooks or phishing vulnerabilities. Every agent interaction is signed, anchored, and deterministically executed on-chain.
+
+Ready to test? Clone the production repo & run it with 1-click Docker:
+github.com/mermail-network/mermail-agent-skill
+
+#Solana #AIAgents #Web3 #BuildOnSolana #SolanaAgentKit

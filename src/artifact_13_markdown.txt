@@ -1,0 +1,5 @@
+1/3 ⚡ Introducing the Mermail Agent Skill on @Solana! Autonomous AI agents are driving DeFi & on-chain operations, but until today, lacked an authenticated, non-repudiable bridge to enterprise communications. We solved it. 🧵👇 #Solana #AIAgents
+
+2/3 🛠️ How it works: Every notification, invoice, and human-in-the-loop (HITL) approval is committed to a Solana PDA with SHA-256 state digests. The skill then routes via @Resend with verifiable headers (`X-Solana-Mermail-PDA`), providing cryptographic proof of execution.
+
+3/3 📦 100% open-source, Anchor-verified, and turnkey-ready for Solana Agent Kit & ElizaOS plugins. Complete with Docker orchestration & high-availability relay daemons. Check out the demo & live code: github.com/solana-mermail/agent-skill 🚀🌐

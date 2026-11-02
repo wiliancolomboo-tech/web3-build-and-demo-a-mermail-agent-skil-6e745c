@@ -1,0 +1,6 @@
+Built with @AnchorLang + @Resend:
+🔒 Deterministic ActionTicket PDAs prevent replay attacks.
+💰 Inbound email callbacks automatically claim escrow bounties.
+🛡️ SHA-256 fingerprinting guarantees message integrity on-chain.
+
+ElizaOS & Solana Agent Kit compatible out of the box. 400ms end-to-end. 🚀

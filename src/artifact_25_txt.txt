@@ -1,0 +1,10 @@
++---------------------------------------------------------------------------------------------+
+|                                OPERATIONAL ALERTING MATRIX                                  |
++------------------------------------+--------------------------+-----------------------------+
+| Condition                          | Severity                 | Action                      |
++------------------------------------+--------------------------+-----------------------------+
+| Webhook HMAC Failures > 5/min      | High (Security Attack)   | Rate-limit ingress IP via CF|
+| Cooldown Violation Spike           | Medium (Agent Loop)      | Inspect client queue state  |
+| Vault Balance < 0.5 SOL            | Critical (Operational)   | Top up Vault PDA address    |
+| RPC Latency > 1500ms               | Low (Degradation)        | Rotate to secondary Helius  |
++------------------------------------+--------------------------+-----------------------------+

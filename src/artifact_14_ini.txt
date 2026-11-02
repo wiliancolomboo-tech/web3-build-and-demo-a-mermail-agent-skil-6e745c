@@ -1,0 +1,7 @@
+SOLANA_RPC_URL=https://api.devnet.solana.com
+MERMAIL_PROGRAM_ID=Merm111111111111111111111111111111111111111
+AGENT_KEYPAIR_PATH=./secrets/agent-keypair.json
+TREASURY_PUBKEY=Hk8fW1wQ2yT95n9fP8gK2VvVjM2v4P7k7pL8w2Q6z4uE
+RESEND_API_KEY=re_123456789abcdef
+RESEND_SENDER_EMAIL=notifications@yourdomain.com
+WEBHOOK_URL=https://api.example.com/webhooks/alerts/placeholder

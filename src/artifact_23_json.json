@@ -1,0 +1,6 @@
+{
+    "status": "HEALTHY",
+    "rpc_connected": true,
+    "last_slot_indexed": 298412891,
+    "processed_envelopes_count": 42
+  }

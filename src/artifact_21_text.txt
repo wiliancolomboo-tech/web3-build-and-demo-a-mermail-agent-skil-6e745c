@@ -1,0 +1,9 @@
+Mermail Agent Skill E2E Lifecycle
+    ✔ 1. Initializes Global Protocol Config with Fees and Treasury (412ms)
+    ✔ 2. Registers Mailboxes for Agent Alpha and Agent Beta (460ms)
+    ✔ 3. Agent Alpha dispatches task to Agent Beta with SOL bond locked in Escrow (532ms)
+    ✔ 4. Agent Beta acknowledges task, commits receipt, and collects split bounty (588ms)
+    ✔ 5. Security Edge Case: Blocks unauthorized recipient from claiming escrow (210ms)
+    ✔ 6. Rejects spam task and refunds sender 100% of pledged capital (495ms)
+
+  6 passing (3s)

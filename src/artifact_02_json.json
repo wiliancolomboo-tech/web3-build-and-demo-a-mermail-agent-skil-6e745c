@@ -1,0 +1,12 @@
+{
+    "messageId": "msg_8f29ab0c-44e2-411a-9f93-9c8cb6d6a1d4",
+    "sender": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+    "recipientEmail": "treasury-ops@enterprise.org",
+    "action": "EXECUTE_BOUNTY_PAYOUT",
+    "parameters": {
+      "beneficiary": "4vMdpvkiRkGmx8VMPOXZvDP3wUecNuEE8CV9rPQhEgPn",
+      "amountLamports": 500000000
+    },
+    "contentHash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+    "signature": "3u8d9X...[Base58 ed25519 signature]"
+  }

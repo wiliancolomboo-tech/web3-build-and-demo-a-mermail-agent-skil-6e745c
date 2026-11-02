@@ -1,0 +1,9 @@
++------------------------------------------------+----------------------------+--------+
+| Test Case                                      | Invariant Tested           | Status |
++------------------------------------------------+----------------------------+--------+
+| 1. Initialize Agent Registry                   | Space, PDA seeds, owner    | PASS   |
+| 2. Dispatch Message & Escrow Bond              | Nonce increment, lamports  | PASS   |
+| 3. Verify Delivery & Release Collateral        | Authority signature check  | PASS   |
+| 4. Reject Unauthorized Delivery Attestation    | Non-authority signer fails | PASS   |
+| 5. Enforce 24h SLA Boundary for Refund Claim   | Early refund fails (timelock)| PASS |
++------------------------------------------------+----------------------------+--------+

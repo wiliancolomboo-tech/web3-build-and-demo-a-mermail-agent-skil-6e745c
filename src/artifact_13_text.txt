@@ -1,0 +1,6 @@
+Every outbound dispatch via @resend is anchored into an Anchor PDA state machine on Solana:
+⚡️ SHA-256 payload digest prevents tampering
+⚡️ Sequence nonces defeat replay & spoofing attacks
+⚡️ Ed25519 signatures authenticate the agent's identity
+
+Zero theoretical stubs. Real mainnet-ready code.

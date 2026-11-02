@@ -1,0 +1,10 @@
++---------------------------------------------------------------------------------------------------+
+| RUNBOOK: INCIDENT RESPONSE & TELEMETRY PROTOCOL                                                   |
++-------------------+--------------------------------+----------------------------------------------+
+| Alert State       | Indicator Metric               | Automated Remediation Action                 |
++-------------------+--------------------------------+----------------------------------------------+
+| RPC Rate-Limited  | 429 Too Many Requests on RPC   | Fallback to secondary failover RPC endpoints |
+| Resend MTA Drop   | Resend API 5xx / Bad Gateway   | Enqueue in memory queue & retry with backoff |
+| Expired Escrows   | Clock > Dispatch.expires_at    | Trigger automated `cancel_expired_dispatch`  |
+| Health Endpoint   | `GET /healthz` returns non-200 | Restart worker node via Docker orchestrator  |
++-------------------+--------------------------------+----------------------------------------------+

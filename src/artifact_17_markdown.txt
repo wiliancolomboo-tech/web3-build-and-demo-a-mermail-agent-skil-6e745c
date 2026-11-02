@@ -1,0 +1,20 @@
+1/3 🚨 Introducing the Mermail Agent Skill for @solana: Autonomous AI agents can swap tokens and manage treasuries, but they've been cut off from real-world communication.
+
+Until now. 
+
+We built the production cryptographic bridge between Solana agents & enterprise email via @resend. 🧵👇
+
+2/3 🛠️ How it works:
+1️⃣ Agent triggers an alert or invoice.
+2️⃣ Mermail anchor program hashes payload & locks anti-spam fee in a MailReceipt PDA.
+3️⃣ Enterprise relay pushes a DKIM-signed email with on-chain cryptographic proofs & Solscan verification links.
+
+Zero spam. 100% provenance.
+
+3/3 📦 Fully open-source & turnkey:
+⚡ Anchor 0.30 smart contract
+⚡ Drop-in Skill for @solana Agent Kit & ElizaOS
+⚡ Dockerized Resend relay daemon with test suite
+
+Check out our submission & live demo: https://github.com/mermail-protocol/mermail-agent-skill
+#Solana #AIAgents #Web3 #BuildOnSolana

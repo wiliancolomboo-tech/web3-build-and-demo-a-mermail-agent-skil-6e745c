@@ -1,0 +1,8 @@
+Built for production. Ready to scale.
+
+✅ 100% Rust (@coral_xyz Anchor) & TypeScript
+✅ Guardrailed policy engines & cryptographic nonces
+✅ Dockerized turnkey self-hosting with live Resend audit alerts
+
+GitHub repo + live demo link below! 🚀
+#Solana #AI #Mermail #DePIN #CryptoAI

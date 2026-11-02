@@ -1,0 +1,8 @@
+Mermail Agent Skill On-Chain Test Suite
+    ✔ 1. Initializes Mailboxes for Agent A and Agent B (425ms)
+    ✔ 2. Dispatches an encrypted task message from Agent A to Agent B with an attached Escrow Bounty (380ms)
+    ✔ 3. Agent B autonomous keeper receives, decrypts, executes, and acknowledges message (3510ms)
+    ✔ 4. Prevents unauthorized party from acknowledging a message (145ms)
+    ✔ 5. Allows Sender to reclaim escrow bounty if timeout slot elapsed (2040ms)
+
+  5 passing (6.5s)

@@ -1,0 +1,19 @@
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json tsconfig.json ./
+RUN npm ci
+COPY src/ ./src/
+COPY cli/ ./cli/
+RUN npm run build || npx tsc
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --only=production
+COPY --from=builder /app/dist ./dist
+RUN mkdir -p /app/keys
+
+EXPOSE 8080
+USER node
+CMD ["node", "dist/cli/agent-worker.js"]

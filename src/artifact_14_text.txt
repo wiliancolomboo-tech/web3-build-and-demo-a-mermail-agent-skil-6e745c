@@ -1,0 +1,6 @@
+The Mermail Skill drops directly into @ElizaOS, LangChain, or Solana Agent Kit with a single npm import.
+
+Check out our production Anchor program, Docker container, & end-to-end integration demo:
+🔗 https://github.com/mermail-so/mermail-agent-skill
+
+Built for the Mermail Skill Bounty on Solana. 🚀🦀

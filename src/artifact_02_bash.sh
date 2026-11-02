@@ -1,0 +1,1 @@
+anchor init mermail_protocol --template multiple

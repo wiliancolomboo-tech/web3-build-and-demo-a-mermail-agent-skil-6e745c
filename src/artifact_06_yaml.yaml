@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  mermail-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-service
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - MERMAIL_PROGRAM_ID=Merm111111111111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - AGENT_SECRET_KEY=${AGENT_SECRET_KEY}
+      - MERMAIL_WEBHOOK_SECRET=${MERMAIL_WEBHOOK_SECRET}
+      - OVERRIDE_NOTIFICATION_EMAIL=${OVERRIDE_NOTIFICATION_EMAIL}
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s

@@ -1,0 +1,13 @@
+# Solana Network Configuration
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_WS_URL=wss://api.devnet.solana.com
+MERMAIL_PROGRAM_ID=MerM111111111111111111111111111111111111111
+AGENT_KEYPAIR_PATH=/app/secrets/keypair.json
+
+# Resend Enterprise API Credentials
+RESEND_API_KEY=re_123456789abcdefghijklmnopqrstuvwxyz
+RESEND_FROM=agent@mermail.network
+
+# Service Health & Telemetry
+PORT=8080
+LOG_LEVEL=info

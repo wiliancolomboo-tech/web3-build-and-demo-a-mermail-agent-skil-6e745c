@@ -1,0 +1,8 @@
+Production-grade from Day 1:
+✅ Complete Anchor smart contract
+✅ Turnkey ElizaOS / Solana Agent Kit skill module
+✅ Multi-stage Docker + Prometheus `/metrics` & `/healthz` endpoints
+
+Deployed and ready for enterprise custody: https://github.com/mermail-agent-skill/core
+
+Built for the Solana AI Agent revolution. ⚡🦀 #Solana #AIAgents #Mermail

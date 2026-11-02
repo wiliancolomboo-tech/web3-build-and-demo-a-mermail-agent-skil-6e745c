@@ -1,0 +1,36 @@
+flowchart TD
+    subgraph OnChain["Solana Cluster (Devnet / Mainnet-Beta)"]
+        Sender["Sender Agent / User"]
+        RecipientMailbox["Recipient Mailbox PDA\n(seeds: ['mailbox', recipient_pubkey])"]
+        MessageRecord["Message Record PDA\n(seeds: ['message', mailbox, msg_nonce])"]
+        EscrowVault["Spam Bond Vault PDA\n(seeds: ['escrow', recipient_pubkey])"]
+    end
+
+    subgraph AgentSkillEngine["Mermail Agent Skill Daemon (Node.js/TypeScript)"]
+        Listener["Solana Event / Account Poller Engine"]
+        Decryptor["Curve25519 NaCl Keypair Decryptor"]
+        ActionRouter["Deterministic Action & Intent Router"]
+        AckBuilder["On-Chain Acknowledgement Signer"]
+    end
+
+    subgraph EnterpriseInfra["External Enterprise Integration Gateway"]
+        ResendAPI["Resend Email API\n(Transactional Dispatch)"]
+        SlackWebhook["Slack Enterprise Bot\n(Incident Channel)"]
+        MetricsCollector["Prometheus / Healthz Telemetry"]
+    end
+
+    Sender -->|"1. send_message(recipient, cipher_nonce, ciphertext_hash, uri, spam_bond)"| RecipientMailbox
+    RecipientMailbox -->|"2. Initialize & Lock Bond"| EscrowVault
+    RecipientMailbox -->|"3. Allocate State"| MessageRecord
+    
+    MessageRecord -.->|"4. Program WebSocket Event / Log"| Listener
+    Listener -->|"5. Fetch Raw Payload & Verify Signature"| Decryptor
+    Decryptor -->|"6. Plaintext Payload"| ActionRouter
+
+    ActionRouter -->|"7a. High Priority Alert"| SlackWebhook
+    ActionRouter -->|"7b. Human Action Required"| ResendAPI
+    ActionRouter -->|"8. Trigger ACK Transaction"| AckBuilder
+    
+    AckBuilder -->|"9. acknowledge_message(msg_nonce)"| RecipientMailbox
+    RecipientMailbox -->|"10. Refund Spam Bond to Sender"| Sender
+    ActionRouter -.->|"11. Emit System Status"| MetricsCollector

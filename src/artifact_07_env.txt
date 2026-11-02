@@ -1,0 +1,7 @@
+SOLANA_RPC_URL="https://api.devnet.solana.com"
+MERMAIL_PROGRAM_ID="Merm111111111111111111111111111111111111111"
+# Base58 or JSON array secret key for agent authority
+AGENT_PRIVATE_KEY="[174,213,...]"
+RESEND_API_KEY="re_1234567890abcdef"
+SENDER_EMAIL="agent@solana.mermail.dev"
+PORT=8080

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mermail-agent-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail_agent_worker
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - MERMAIL_PROGRAM_ID=MermGtwy11111111111111111111111111111111111
+      - AGENT_PRIVATE_KEY=[1,2,3...255]
+      - RESEND_API_KEY=re_enterprise_live_key
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

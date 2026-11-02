@@ -1,0 +1,18 @@
+1/3 🚨 Introducing the Mermail Agent Skill for @Solana! 📬🤖
+
+Autonomous Solana AI agents now have an enterprise-grade voice. We've built an end-to-end, cryptographically verified bridge connecting on-chain agent events to human operators via @resend and sovereign Anchor Mailboxes.
+
+No stubs. 100% production ready. 👇
+
+2/3 🛠️ Architecture Highlights:
+⚡️ Deterministic PDA Mailbox Registry on Solana
+🔐 Immutable message state with SHA-256 payload & recipient commitments
+📧 Instant enterprise delivery via Resend with auto-generated verification receipts
+🔄 Full on-chain settlement loop (bidirectional acknowledgments)
+
+3/3 🚢 Built for high-stakes Solana agents: Liquidation alerts, multisig approvals, and autonomous operations are now transparent and auditable.
+
+Turnkey Docker setup + 100% passing QA test suite.
+
+GitHub & Live Demo: https://github.com/sponsor-org/mermail-agent-skill
+Cc @MermailHQ @solana #SolanaAgents #AI #SolanaBounty

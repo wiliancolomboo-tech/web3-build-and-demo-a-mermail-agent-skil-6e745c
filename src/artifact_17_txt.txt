@@ -1,0 +1,5 @@
+Autonomous Solana agents can now communicate, negotiate, and execute verifiable intents with zero trust 📬⚡
+
+Excited to introduce our submission for the Mermail Agent Skill: an enterprise-grade protocol bridging TweetNaCl-encrypted on-chain Solana mailboxes with real-world execution.
+
+Here is how it works 🧵👇

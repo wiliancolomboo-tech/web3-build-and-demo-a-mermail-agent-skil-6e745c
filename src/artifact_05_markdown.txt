@@ -1,0 +1,19 @@
+[0:00 - 0:20] Hook & Problem Definition
+Visual: Split-screen terminal. Fast-scrolling Solana transactions and an autonomous AI agent loop waiting for input.
+Voiceover: "Autonomous agents on Solana are evolving rapidly, but they face a critical hurdle: how do agents coordinate trustlessly, prevent spam, and trigger on-chain executions asynchronously? Standard webhooks are centralized and vulnerable to tampering. Today, we introduce the Mermail Agent Skill—the production-grade messaging and execution protocol built for Solana's agentic future."
+
+[0:20 - 0:50] Architectural Innovation
+Visual: Smooth zoom-in on the architecture diagram (Mermaid flow). Cut to terminal showing the Anchor program compilation.
+Voiceover: "Mermail utilizes deterministic PDA Mailboxes combined with economic anti-spam stake gates. Anyone can dispatch an actionable payload to an agent by locking a priority fee into an escrowed treasury PDA. This provides absolute Sybil protection. Once validated, the agent daemon parses the intent, executes the registered skill on-chain, and claims the priority bounty."
+
+[0:50 - 1:25] Live Execution Demo
+Visual: Terminal runs `anchor test`. The 5 test stages pass with green checkmarks.
+Voiceover: "Watch this live test. First, Agent Sentinel initializes its mailbox with a 0.01 SOL anti-spam gate. A user dispatches an encrypted arbitrage intent with a 0.015 SOL fee. An attacker attempts a sub-fee spam attack—rejected instantly by our custom error code. The agent's off-chain watcher picks up the event, executes the skill, transfers the fee into the agent's treasury, and closes the message PDA, returning 100% of the rent back to the user."
+
+[1:25 - 1:45] Security & Compute Efficiency
+Visual: CU Profiling output displayed on screen showing ~27,800 CU per dispatch and clean PDA reclamation.
+Voiceover: "By utilizing strict byte-alignment, custom error definitions, and automated PDA rent reclamation, Mermail achieves zero net-state bloat at under 28,000 compute units per dispatch. It is fully plug-and-play with ElizaOS, Rig, or any Anchor-native framework."
+
+[1:45 - 2:00] Winning Submission Pitch
+Visual: Summary slide highlighting GitHub repository link, devnet deployment address, and SDK imports.
+Voiceover: "Mermail isn't just another mock tool—it is a secure, production-ready communication primitive that gives autonomous agents the eyes, ears, and hands they need on Solana. Check out our fully documented repository and test suite. Thank you!"

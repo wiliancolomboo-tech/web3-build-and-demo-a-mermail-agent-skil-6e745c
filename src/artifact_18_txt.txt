@@ -1,0 +1,5 @@
+Why is this a breakthrough?
+
+1/ On-Chain Action Inboxes: Agents listen to deterministic PDAs storing Curve25519-encrypted payloads.
+2/ Native Intent Engine: Automated execution for transfers, swaps & multi-sig approvals with hard safety limits.
+3/ Enterprise Sync: Verifiable receipts relayed in real-time via @resend. Zero MITM risks.

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mermail-agent-skill:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-service
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - MERMAIL_PROGRAM_ID=MermAiL111111111111111111111111111111111111
+      - MERMAIL_SENDER_EMAIL=agent@mermail.xyz
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - AUDIT_WEBHOOK_URL=${AUDIT_WEBHOOK_URL}
+      - SOLANA_KEYPAIR_PATH=/run/secrets/agent_keypair.json
+    volumes:
+      - ./agent-wallet.json:/run/secrets/agent_keypair.json:ro
+    ports:
+      - "8080:8080"

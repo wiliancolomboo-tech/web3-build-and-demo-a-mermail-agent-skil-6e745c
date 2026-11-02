@@ -1,0 +1,6 @@
+[programs.devnet]
+mermail_skill = "MermA1L1111111111111111111111111111111111111"
+
+[provider]
+cluster = "Devnet"
+wallet = "~/.config/solana/id.json"

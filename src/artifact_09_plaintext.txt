@@ -1,0 +1,7 @@
+mermail-agent-skill-suite
+    ✔ Step 1: Initializes Agent B Mailbox PDA with Anti-Spam Bond threshold (412ms)
+    ✔ Step 2: Fails when Agent A dispatches with insufficient spam-bond (198ms)
+    ✔ Step 3: Successfully dispatches envelope from Agent A to Agent B with valid bond (510ms)
+    ✔ Step 4: Agent B listens, executes skill logic, acknowledges, and claims spam bond (385ms)
+
+  4 passing (1.52s)

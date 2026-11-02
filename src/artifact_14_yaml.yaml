@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mermail-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-daemon
+    restart: unless-stopped
+    environment:
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL}
+      - SOLANA_KEYPAIR_PATH=/app/keys/agent-keypair.json
+      - MERMAIL_PROGRAM_ID=${MERMAIL_PROGRAM_ID}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - MERMAIL_SENDER_EMAIL=${MERMAIL_SENDER_EMAIL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - PORT=8080
+    volumes:
+      - ./keys/agent-keypair.json:/app/keys/agent-keypair.json:ro
+    ports:
+      - "8080:8080"

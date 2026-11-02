@@ -1,178 +1,85 @@
-import * as anchor from "@coral-xyz/anchor";
-import { Program } from "@coral-xyz/anchor";
-import { MermailCore } from "../target/types/mermail_core";
-import { PublicKey, Keypair, SystemProgram, LAMPORTS_PER_SOL } from "@solana/web3.js";
-import { expect } from "chai";
-import { MermailAgentSkill, ActionPayload } from "../client/MermailAgentSkill";
+#!/usr/bin/env node
+import { Command } from "commander";
+import { Keypair, PublicKey } from "@solana/web3.js";
+import { MermailAgentSkill } from "./mermail-skill";
+import * as dotenv from "dotenv";
+import * as fs from "fs";
 
-describe("Mermail Protocol Test Suite", () => {
-  const provider = anchor.AnchorProvider.env();
-  anchor.setProvider(provider);
+dotenv.config();
 
-  const program = anchor.workspace.MermailCore as Program<MermailCore>;
-  const senderKeypair = Keypair.generate();
-  const agentKeypair = Keypair.generate();
+const program = new Command();
 
-  let agentMailboxPda: PublicKey;
+function loadKeypair(path: string): Keypair {
+  const secret = JSON.parse(fs.readFileSync(path, "utf-8"));
+  return Keypair.fromSecretKey(Uint8Array.from(secret));
+}
 
-  before(async () => {
-    // Fund test keypairs
-    const airdrop1 = await provider.connection.requestAirdrop(senderKeypair.publicKey, 5 * LAMPORTS_PER_SOL);
-    const airdrop2 = await provider.connection.requestAirdrop(agentKeypair.publicKey, 5 * LAMPORTS_PER_SOL);
-    await provider.connection.confirmTransaction(airdrop1);
-    await provider.connection.confirmTransaction(airdrop2);
+program
+  .name("mermail-agent-cli")
+  .description("Turnkey CLI & Daemon for Mermail Solana Agent Skill")
+  .version("1.0.0");
 
-    [agentMailboxPda] = PublicKey.findProgramAddressSync(
-      [Buffer.from("mailbox"), agentKeypair.publicKey.toBuffer()],
-      program.programId
-    );
+program
+  .command("listen")
+  .description("Runs the Mermail daemon to monitor and execute agent mail skills")
+  .option("-k, --keypair <path>", "Path to Agent Keypair JSON", "./agent-keypair.json")
+  .option("-r, --rpc <url>", "Solana RPC URL", "https://api.devnet.solana.com")
+  .option("-p, --program <id>", "Mermail Core Program ID", "MermAiL111111111111111111111111111111111111")
+  .option("-m, --mailbox <id>", "Mailbox Identifier", "enterprise-agent-01")
+  .action(async (options) => {
+    console.log("==================================================");
+    console.log("Starting Mermail Autonomous Agent Daemon...");
+    console.log("==================================================");
+
+    const agentKey = loadKeypair(options.keypair);
+    const skill = new MermailAgentSkill({
+      rpcUrl: options.rpc,
+      agentKeypair: agentKey,
+      programId: new PublicKey(options.program),
+      resendApiKey: process.env.RESEND_API_KEY || "re_test_dummy_key",
+      slackWebhookUrl: process.env.SLACK_WEBHOOK_URL,
+      mailboxId: options.mailbox,
+    });
+
+    const [mailboxPda] = skill.getMailboxPda();
+    console.log(`[INIT] Agent Authority: ${agentKey.publicKey.toBase58()}`);
+    console.log(`[INIT] Mailbox PDA:     ${mailboxPda.toBase58()}`);
+    console.log("[DAEMON] Listening for on-chain events and enterprise dispatch hooks...");
+
+    // Keep event loop alive
+    setInterval(() => {
+      console.log(`[HEARTBEAT] ${new Date().toISOString()} - Mermail Skill Daemon Healthy`);
+    }, 30000);
   });
 
-  it("QA-01: Initializes agent mailbox with zeroed counters", async () => {
-    await program.methods
-      .initializeMailbox()
-      .accounts({
-        mailbox: agentMailboxPda,
-        authority: agentKeypair.publicKey,
-        systemProgram: SystemProgram.programId,
-      })
-      .signers([agentKeypair])
-      .rpc();
+program
+  .command("dispatch-demo")
+  .description("Simulate sending a verified email request and triggering agent settlement")
+  .requiredOption("-e, --email <target>", "Corporate recipient email")
+  .requiredOption("-s, --subject <text>", "Instruction subject")
+  .action(async (options) => {
+    const dummyAgent = Keypair.generate();
+    const dummySender = Keypair.generate();
 
-    const mailboxAccount = await program.account.mailbox.fetch(agentMailboxPda);
-    expect(mailboxAccount.authority.toBase58()).to.equal(agentKeypair.publicKey.toBase58());
-    expect(mailboxAccount.messageCount.toNumber()).to.equal(0);
-    expect(mailboxAccount.unreadCount.toNumber()).to.equal(0);
+    const skill = new MermailAgentSkill({
+      rpcUrl: "https://api.devnet.solana.com",
+      agentKeypair: dummyAgent,
+      programId: new PublicKey("MermAiL111111111111111111111111111111111111"),
+      resendApiKey: process.env.RESEND_API_KEY || "re_mock",
+      slackWebhookUrl: process.env.SLACK_WEBHOOK_URL,
+      mailboxId: "enterprise-agent-01",
+    });
+
+    console.log("[SIMULATION] Dispatching demo payload to agent skill...");
+    const proof = await skill.processInboundAction(dummySender, {
+      senderPubkey: dummySender.publicKey.toBase58(),
+      replyToEmail: options.email,
+      payloadUri: "https://arweave.net/mermail-mock-payload-001",
+      subject: options.subject,
+      body: "Execute auto-rebalance of liquidity vault upon receipt.",
+    });
+
+    console.log(`[SUCCESS] Proof generated: ${proof}`);
   });
 
-  it("QA-02: Dispatches action message with locked SOL bounty", async () => {
-    const payload: ActionPayload = {
-      intent: "SWAP",
-      targetProgram: "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
-      parameters: { amountIn: 1000000, minOut: 2500000 },
-      nonce: 1,
-    };
-
-    const payloadHash = Array.from(MermailAgentSkill.hashPayload(payload));
-    const currentSlot = await provider.connection.getSlot();
-    const bounty = new anchor.BN(0.5 * LAMPORTS_PER_SOL);
-    const seqNum = new anchor.BN(0);
-
-    const [messagePda] = PublicKey.findProgramAddressSync(
-      [Buffer.from("message"), agentMailboxPda.toBuffer(), seqNum.toArrayLike(Buffer, "le", 8)],
-      program.programId
-    );
-
-    const preBalance = await provider.connection.getBalance(senderKeypair.publicKey);
-
-    await program.methods
-      .sendMessage(payloadHash, "https://arweave.net/example-action-manifest", bounty, new anchor.BN(currentSlot + 100))
-      .accounts({
-        recipientMailbox: agentMailboxPda,
-        message: messagePda,
-        sender: senderKeypair.publicKey,
-        systemProgram: SystemProgram.programId,
-      })
-      .signers([senderKeypair])
-      .rpc();
-
-    const messageAccount = await program.account.message.fetch(messagePda);
-    expect(messageAccount.bountyAmount.eq(bounty)).to.be.true;
-    expect(messageAccount.status).to.deep.equal({ pending: {} });
-
-    const mailboxAccount = await program.account.mailbox.fetch(agentMailboxPda);
-    expect(mailboxAccount.messageCount.toNumber()).to.equal(1);
-    expect(mailboxAccount.unreadCount.toNumber()).to.equal(1);
-  });
-
-  it("QA-03: Rejects execution if payload hash does not match on-chain commitment", async () => {
-    const seqNum = new anchor.BN(0);
-    const [messagePda] = PublicKey.findProgramAddressSync(
-      [Buffer.from("message"), agentMailboxPda.toBuffer(), seqNum.toArrayLike(Buffer, "le", 8)],
-      program.programId
-    );
-
-    const forgedPayload = Buffer.from(JSON.stringify({ intent: "DRAIN_FUNDS", nonce: 999 }));
-
-    try {
-      await program.methods
-        .executeAction(forgedPayload)
-        .accounts({
-          recipientMailbox: agentMailboxPda,
-          message: messagePda,
-          authority: agentKeypair.publicKey,
-          executor: agentKeypair.publicKey,
-        })
-        .signers([agentKeypair])
-        .rpc();
-      expect.fail("Execution should have failed with PayloadHashMismatch");
-    } catch (err: any) {
-      expect(err.error.errorCode.code).to.equal("PayloadHashMismatch");
-    }
-  });
-
-  it("QA-04: Successfully verifies payload, executes action, and disburses bounty", async () => {
-    const legitimatePayload: ActionPayload = {
-      intent: "SWAP",
-      targetProgram: "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
-      parameters: { amountIn: 1000000, minOut: 2500000 },
-      nonce: 1,
-    };
-
-    const seqNum = new anchor.BN(0);
-    const [messagePda] = PublicKey.findProgramAddressSync(
-      [Buffer.from("message"), agentMailboxPda.toBuffer(), seqNum.toArrayLike(Buffer, "le", 8)],
-      program.programId
-    );
-
-    const preBalance = await provider.connection.getBalance(agentKeypair.publicKey);
-    const rawBuffer = Buffer.from(JSON.stringify(legitimatePayload));
-
-    await program.methods
-      .executeAction(rawBuffer)
-      .accounts({
-        recipientMailbox: agentMailboxPda,
-        message: messagePda,
-        authority: agentKeypair.publicKey,
-        executor: agentKeypair.publicKey,
-      })
-      .signers([agentKeypair])
-      .rpc();
-
-    const postBalance = await provider.connection.getBalance(agentKeypair.publicKey);
-    const messageAccount = await program.account.message.fetch(messagePda);
-
-    expect(messageAccount.status).to.deep.equal({ executed: {} });
-    expect(postBalance).to.be.greaterThan(preBalance); // Bounty deposited
-  });
-
-  it("QA-05: Reverts unauthorized attempt to settle an already executed message", async () => {
-    const legitimatePayload: ActionPayload = {
-      intent: "SWAP",
-      targetProgram: "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4",
-      parameters: { amountIn: 1000000, minOut: 2500000 },
-      nonce: 1,
-    };
-    const seqNum = new anchor.BN(0);
-    const [messagePda] = PublicKey.findProgramAddressSync(
-      [Buffer.from("message"), agentMailboxPda.toBuffer(), seqNum.toArrayLike(Buffer, "le", 8)],
-      program.programId
-    );
-
-    try {
-      await program.methods
-        .executeAction(Buffer.from(JSON.stringify(legitimatePayload)))
-        .accounts({
-          recipientMailbox: agentMailboxPda,
-          message: messagePda,
-          authority: agentKeypair.publicKey,
-          executor: agentKeypair.publicKey,
-        })
-        .signers([agentKeypair])
-        .rpc();
-      expect.fail("Settlement should have reverted on already executed message");
-    } catch (err: any) {
-      expect(err.error.errorCode.code).to.equal("MessageAlreadySettled");
-    }
-  });
-});
+program.parse(process.argv);

@@ -1,0 +1,7 @@
+{
+  "status": "healthy",
+  "uptime_seconds": 84210,
+  "rpc_connected": true,
+  "slot_lag": 1,
+  "dispatches_processed": 1420
+}

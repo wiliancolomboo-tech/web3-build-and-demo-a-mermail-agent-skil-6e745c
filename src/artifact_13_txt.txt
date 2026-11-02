@@ -1,0 +1,17 @@
++-----------------------------------------------------------------------------------------+
+|                                OPERATIONAL HEALTH RUNBOOK                               |
++--------------------------+------------------------------+-------------------------------+
+| Check Item               | Target Diagnostic Endpoint   | Action on Failure             |
++--------------------------+------------------------------+-------------------------------+
+| Service Liveness         | GET http://localhost:3000/   | Inspect Docker logs; restart  |
+|                          | healthz                      | container if process stalled. |
++--------------------------+------------------------------+-------------------------------+
+| RPC Block Drift          | `slot` metric in /healthz vs | Failover to backup RPC        |
+|                          | public Solana slot.          | cluster (Helius/Triton).      |
++--------------------------+------------------------------+-------------------------------+
+| Resend Delivery Drops    | Resend Webhook Dashboard /   | Verify domain DKIM/SPF TXT    |
+|                          | 4xx/5xx API metrics.         | records in Cloudflare DNS.    |
++--------------------------+------------------------------+-------------------------------+
+| Fee Vault Exhaustion     | On-chain balance of PDA      | Top-up agent operational      |
+|                          | seeds: [b"vault", agent]     | account to preserve rent min. |
++--------------------------+------------------------------+-------------------------------+

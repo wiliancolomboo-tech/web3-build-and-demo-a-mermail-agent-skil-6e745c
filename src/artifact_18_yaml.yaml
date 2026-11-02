@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  mermail-agent-relay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-service
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SENDER_EMAIL=${SENDER_EMAIL:-dispatch@mermail.dev}
+      - AGENT_ID=yield-guardian-01
+      - COOLDOWN_SECONDS=15
+    volumes:
+      - ./keys/id.json:/usr/src/app/id.json:ro
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "node -e 'process.exit(0)'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

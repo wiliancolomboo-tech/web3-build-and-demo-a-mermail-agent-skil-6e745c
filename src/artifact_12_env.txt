@@ -1,0 +1,14 @@
+# Solana Network Configuration
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_AGENT_SECRET_KEY=[12,34,56,78,90,...]
+
+# Mermail Agent Profile
+AGENT_IDENTIFIER=solana-treasury-sentinel-01
+SENDER_EMAIL=agent-alerts@yourdomain.com
+CALLBACK_BASE_URL=https://api.yourdomain.com
+
+# Enterprise Mail Infrastructure (Resend)
+RESEND_API_KEY=re_1234567890abcdef
+
+# Daemon Webhook Port
+PORT=8080

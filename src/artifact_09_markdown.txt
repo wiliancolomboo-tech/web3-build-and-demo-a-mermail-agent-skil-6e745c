@@ -1,0 +1,18 @@
+1/3 🚀 Introducing Mermail Agent Skill: The verifiable, on-chain email & escrow settlement engine for @Solana AI Agents!
+
+Autonomous agents can now break free of isolated websocket loops to deliver DKIM-authenticated, cryptographically signed enterprise emails linked to on-chain Anchor PDAs. ✉️⚡
+
+2/3 🛠️ Under the hood:
+• Anchor Smart Contract (`mermail_core`) locks hashes & escrow vaults
+• Enterprise delivery via @Resend with Solana tx headers
+• Verifiable HMAC/Ed25519 inbound settlement webhooks
+• 100% plug-and-play with ElizaOS & Solana Agent Kit
+
+Zero mock stubs. Turnkey Docker setup.
+
+3/3 🏆 Mermail turns AI agents into trusted corporate operators: invoice approvals, emergency DAO alerts, and cross-border treasury settlements directly via email.
+
+Full open-source repo, test matrix & runbook ready for mainnet:
+github.com/your-org/mermail-agent-skill
+
+#Solana #AIAgents #SolanaAgentKit #Web3Infrastructure

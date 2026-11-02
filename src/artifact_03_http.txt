@@ -1,0 +1,7 @@
+X-Mermail-Version: 1.0.0
+X-Solana-Network: mainnet-beta
+X-Solana-Program-Id: MermaiL111111111111111111111111111111111111
+X-Solana-Mail-PDA: 7dK4pW...q9hY
+X-Solana-Tx-Signature: 5Rt...xyz
+X-Mermail-Content-Digest: 3b9c...a721 (SHA-256)
+X-Mermail-Bounty-Lamports: 50000000 (0.05 SOL)

@@ -1,0 +1,11 @@
+# Solana Network Configuration
+SOLANA_RPC_URL=https://api.devnet.solana.com
+PAYER_KEYPAIR_PATH=./keys/id.json
+
+# Enterprise Resend API Credentials
+RESEND_API_KEY=re_123456789_abcdefghijklmnopqrstuvwxyz
+SENDER_EMAIL=agent-relay@mermail.dev
+
+# Production Telemetry & Port
+PORT=8080
+LOG_LEVEL=info

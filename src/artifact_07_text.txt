@@ -1,0 +1,7 @@
+client/
+├── package.json
+├── tsconfig.json
+├── src/
+│   ├── MermailClient.ts
+│   ├── MermailAgentSkill.ts
+│   └── worker.ts

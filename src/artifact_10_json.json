@@ -1,0 +1,8 @@
+{
+  "status": "healthy",
+  "agent_pubkey": "Agnt9jMv2k4PZ12...q9",
+  "mailbox_pda": "Mbx87pT4kL...",
+  "solana_slot_height": 298412841,
+  "resend_gateway": "CONNECTED",
+  "unprocessed_backlog": 0
+}

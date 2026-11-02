@@ -1,0 +1,7 @@
+client/
+├── package.json
+├── tsconfig.json
+├── src/
+│   ├── MermailSkill.ts
+│   ├── ResendAdapter.ts
+│   └── cli.ts

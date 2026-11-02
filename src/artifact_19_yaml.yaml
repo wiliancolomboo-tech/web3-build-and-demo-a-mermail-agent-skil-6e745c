@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  mermail-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-daemon
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - SOLANA_RPC_ENDPOINT=https://api.mainnet-beta.solana.com
+      - SOLANA_WS_ENDPOINT=wss://api.mainnet-beta.solana.com
+      - PROGRAM_ID=Merm111111111111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SENDER_EMAIL=agent-reports@mermail.xyz
+      - DELIVERER_PRIVATE_KEY=${DELIVERER_PRIVATE_KEY}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"

@@ -1,0 +1,74 @@
+{
+  "version": "0.1.0",
+  "name": "mermail_core",
+  "instructions": [
+    {
+      "name": "initializeMailbox",
+      "accounts": [
+        { "name": "mailbox", "isMut": true, "isSigner": false },
+        { "name": "agentAuthority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "agentLabel", "type": "string" }]
+    },
+    {
+      "name": "dispatchMessage",
+      "accounts": [
+        { "name": "mailbox", "isMut": true, "isSigner": false },
+        { "name": "dispatchReceipt", "isMut": true, "isSigner": false },
+        { "name": "agentAuthority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "subject", "type": "string" },
+        { "name": "bodySha256", "type": { "array": ["u8", 32] } },
+        { "name": "actionUri", "type": "string" }
+      ]
+    },
+    {
+      "name": "acknowledgeAction",
+      "accounts": [
+        { "name": "dispatchReceipt", "isMut": true, "isSigner": false },
+        { "name": "resolver", "isMut": false, "isSigner": true }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Mailbox",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "agentLabel", "type": "string" },
+          { "name": "messageNonce", "type": "u64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "DispatchReceipt",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "mailbox", "type": "publicKey" },
+          { "name": "sender", "type": "publicKey" },
+          { "name": "nonce", "type": "u64" },
+          { "name": "bodySha256", "type": { "array": ["u8", 32] } },
+          { "name": "dispatchedAt", "type": "i64" },
+          { "name": "acknowledged", "type": "bool" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "InvalidLabelLength", "msg": "Label exceeds maximum length of 64 characters" },
+    { "code": 6001, "name": "InvalidSubjectLength", "msg": "Subject exceeds limit of 128 characters" },
+    { "code": 6002, "name": "InvalidActionUriLength", "msg": "Action URI exceeds limit of 256 characters" },
+    { "code": 6003, "name": "NonceOverflow", "msg": "Sequence nonce overflow" },
+    { "code": 6004, "name": "UnauthorizedSigner", "msg": "Signer is not authorized for this mailbox" },
+    { "code": 6005, "name": "AlreadyAcknowledged", "msg": "Message action has already been marked acknowledged" }
+  ]
+}

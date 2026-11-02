@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mermail-relayer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-https://api.devnet.solana.com}
+      - MERMAIL_PROGRAM_ID=${MERMAIL_PROGRAM_ID:-mermaiLC2qJ6p3N3uK9nFqP4hR7vZtE8uX1yA9wB5sD}
+      - RELAYER_SECRET_KEY=${RELAYER_SECRET_KEY}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - MERMAIL_SENDER_EMAIL=${MERMAIL_SENDER_EMAIL:-alerts@mermail.dev}
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"

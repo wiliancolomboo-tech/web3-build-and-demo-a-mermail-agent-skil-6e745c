@@ -1,0 +1,13 @@
+OPERATIONAL RUNBOOK: MERMAIL SKILL
++-------------------------+-----------------------------------------------------------+
+| INCIDENT                | RECOVERY ACTION                                           |
++-------------------------+-----------------------------------------------------------+
+| Rate Limit HTTP 429     | Backoff active; Redis queue stores state for 24h. No      |
+| from Resend API         | transaction loss occurs; on-chain proof is already valid. |
++-------------------------+-----------------------------------------------------------+
+| Webhook HMAC Mismatch   | Audit inbound IP origin and refresh WEBHOOK_SECRET. Check |
+|                         | for replay attempts using cached nonces.                  |
++-------------------------+-----------------------------------------------------------+
+| Solana RPC Outage       | Switch connection failover to alternate RPC cluster       |
+|                         | (Triton / Helius) without changing PDA state accounts.    |
++-------------------------+-----------------------------------------------------------+

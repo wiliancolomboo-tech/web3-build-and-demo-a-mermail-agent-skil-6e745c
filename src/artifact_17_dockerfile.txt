@@ -1,0 +1,27 @@
+# Multi-stage production build
+FROM node:20-slim AS builder
+
+WORKDIR /usr/src/app
+
+COPY client/package*.json ./
+RUN npm ci
+
+COPY client/tsconfig.json ./
+COPY client/src ./src
+RUN npm run build
+
+FROM node:20-slim AS runner
+WORKDIR /usr/src/app
+
+ENV NODE_ENV=production
+
+COPY client/package*.json ./
+RUN npm ci --only=production
+
+COPY --from=builder /usr/src/app/dist ./dist
+
+# Non-root user for enterprise security
+USER node
+
+EXPOSE 8080
+CMD ["node", "dist/cli.js"]

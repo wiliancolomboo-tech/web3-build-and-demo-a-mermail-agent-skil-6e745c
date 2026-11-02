@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  mermail-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-autonomous-agent
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-https://api.devnet.solana.com}
+      - MERMAIL_PROGRAM_ID=${MERMAIL_PROGRAM_ID}
+      - AGENT_PRIVATE_KEY_JSON=${AGENT_PRIVATE_KEY_JSON}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - AUDIT_EMAIL_TO=${AUDIT_EMAIL_TO}
+      - AUDIT_EMAIL_FROM=${AUDIT_EMAIL_FROM}
+      - ENTERPRISE_WEBHOOK_URL=${ENTERPRISE_WEBHOOK_URL}
+      - PORT=8080
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

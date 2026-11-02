@@ -1,0 +1,7 @@
+skill/
+├── package.json
+├── tsconfig.json
+└── src/
+    ├── index.ts
+    ├── MermailClient.ts
+    └── server.ts

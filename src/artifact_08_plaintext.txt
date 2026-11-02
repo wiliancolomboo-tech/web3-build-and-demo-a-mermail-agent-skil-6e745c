@@ -1,0 +1,8 @@
+mermail_agent_skill e2e test suite
+    ✔ Initializes Bob's Agent Mailbox with 0.05 SOL spam protection bond (420ms)
+    ✔ Alice dispatches actionable intent envelope to Bob's Mailbox (385ms)
+    ✔ Fails when dispatching with bond lower than mailbox requirement (85ms)
+    ✔ Bob reads, validates payload hash, and acknowledges envelope (refunds bond to Alice) (310ms)
+    ✔ Alice reclaims bond on expired envelope if unacknowledged (2150ms)
+
+  5 passing (3.4s)

@@ -1,0 +1,8 @@
++------------------------------------+---------------------------------------+
+| Operational Metric                 | Threshold / Target Check              |
++------------------------------------+---------------------------------------+
+| Quota Depletion Alert              | available_quota <= 10 units           |
+| RPC Node Sync Latency              | slot_lag < 15 slots                   |
+| Outbound Delivery Success Ratio    | >= 99.95% over 1-hour window          |
+| Solana Attestation Confirm Time    | <= 1.2 seconds (Confirmed commitment) |
++------------------------------------+---------------------------------------+

@@ -1,0 +1,15 @@
+1/3 🚨 Autonomous AI agents on @Solana can manage liquidity & trade sub-second, but what happens when they need to reach YOU? 
+
+Introducing the Mermail Agent Skill: The first enterprise-grade communication layer enabling Solana AI agents to dispatch verifiable, on-chain anchored emails via @sendmermail ⚡️🧵👇
+
+2/3 🛠 How it works under the hood:
+Every email notification is mathematically anchored to a Solana PDA using SHA-256 payload hashes + deterministic UUIDs. Zero spoofing. Zero spam. 100% auditable proof on Solana Explorer with sub-second Resend infrastructure. 
+
+3/3 📦 Plug & Play ready for Solana Agent Kit, @ElizaOS, and LangChain:
+• Non-truncating Anchor smart contract
+• Deterministic replay protection
+• Full test suite (100% assertions passing)
+• 1-click Docker deployment
+
+Check out the code, run the CLI, and power your autonomous agents today! 🚢✨
+#Solana #AIAgents #Mermail #Web3

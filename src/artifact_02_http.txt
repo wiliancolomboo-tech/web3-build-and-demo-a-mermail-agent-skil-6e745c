@@ -1,0 +1,6 @@
+X-Mermail-Program-Id: MerM7V9bU4vU9N4kE9qP6xZ6A5B4C3D2E1F0G9H8J7K
+X-Mermail-Agent-Pubkey: 6xK...Agnt
+X-Mermail-Message-PDA: 9rT...Rcpt
+X-Mermail-Digest: 8f4e2...e3b8 (SHA-256 of canonical JSON payload)
+X-Mermail-Signature: 3B7x... (Ed25519 signature of digest)
+X-Mermail-Solana-Cluster: mainnet-beta / devnet

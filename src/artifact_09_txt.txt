@@ -1,0 +1,9 @@
++------------------------------------+--------------------------------+-----------------+
+| Test Case Name                     | Invariant Under Test           | Pass Condition  |
++------------------------------------+--------------------------------+-----------------+
+| TC-01: Vault Initialization        | Config PDA Seed & Bump Derive  | 100% Correct    |
+| TC-02: Normal Settlement Transfer  | Lamports deducted & received   | Delta == Amount |
+| TC-03: Replay Attack Defense       | Nonce / Sequence PDA duplicate | Tx Reverted     |
+| TC-04: Disbursement Ceiling Check  | Lamports > MaxDailyLimit       | LimitExceeded   |
+| TC-05: Signature Provenance Guard  | Signer != Authority on PDA     | ConstraintFail  |
++------------------------------------+--------------------------------+-----------------+

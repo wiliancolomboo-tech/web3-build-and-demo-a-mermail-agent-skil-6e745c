@@ -1,0 +1,11 @@
+# Solana Configuration
+SOLANA_RPC_URL="https://api.devnet.solana.com"
+MERMAIL_PROGRAM_ID="MermAiL111111111111111111111111111111111111"
+SOLANA_KEYPAIR_PATH="./agent-wallet.json"
+
+# Enterprise Email Configuration
+RESEND_API_KEY="re_123456789_abcdefghijklmnopqrstuvwxyz"
+MERMAIL_SENDER_EMAIL="agent@mermail.xyz"
+
+# Real-time Telemetry (Slack or Discord Webhook URL)
+AUDIT_WEBHOOK_URL="https://api.example.com/webhooks/alerts/placeholder"

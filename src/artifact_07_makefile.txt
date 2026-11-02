@@ -1,0 +1,17 @@
+.PHONY: build test deploy up down
+
+build:
+	anchor build
+	npm install && npm run build
+
+test:
+	anchor test
+
+deploy-devnet:
+	anchor deploy --provider.cluster devnet
+
+up:
+	docker compose up -d --build
+
+down:
+	docker compose down -v

@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mermail-agent-daemon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-daemon
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SOLANA_KEYPAIR_PATH=/app/keys/id.json
+      - MERMAIL_PROGRAM_ID=MermA11111111111111111111111111111111111111
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SENDER_EMAIL=${SENDER_EMAIL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - PORT=8080
+    volumes:
+      - ./keys:/app/keys:ro
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8080/health', (r) => {if (r.statusCode !== 200) process.exit(1);})"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

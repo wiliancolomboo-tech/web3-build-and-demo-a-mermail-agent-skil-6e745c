@@ -1,0 +1,8 @@
+Mermail Agent Skill Complete Verification Suite
+    ✔ 1. Initializes an Agent Inbox with custom SLA and capabilities (184ms)
+    ✔ 2. Client deposits task and locks escrow in MessageThread PDA (162ms)
+    ✔ 3. Agent satisfies task within SLA, posts proof, and unlocks payment (159ms)
+    ✔ 4. Rejects claims from unauthorized signer (87ms)
+    ✔ 5. Allows client to refund escrow when agent breaches response SLA (3120ms)
+
+  5 passing (3.72s)

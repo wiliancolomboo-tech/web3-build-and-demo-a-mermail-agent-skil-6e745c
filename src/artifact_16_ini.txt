@@ -1,0 +1,7 @@
+# Solana Configuration
+SOLANA_RPC_URL=https://api.devnet.solana.com
+SOLANA_AGENT_PRIVATE_KEY=3W7X...YOUR_BASE58_SECRET_KEY...
+
+# Mermail / Resend Enterprise Configuration
+RESEND_API_KEY=re_1234567890abcdefghijklmnopqrstuv
+PORT=8080

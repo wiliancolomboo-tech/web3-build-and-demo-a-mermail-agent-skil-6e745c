@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mermail-agent-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mermail-agent-worker
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - SOLANA_RPC_URL=https://api.devnet.solana.com
+      - SOLANA_PRIVATE_KEY=${SOLANA_PRIVATE_KEY}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - SENDER_EMAIL=${SENDER_EMAIL}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - PORT=8080
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
