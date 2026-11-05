@@ -2,6 +2,6 @@ PORT=8080
 SOLANA_RPC_URL=https://api.devnet.solana.com
 MERMAIL_PROGRAM_ID=MermGiE8oXb594rR22y3WfU5X9F3N5Z9f9qM8G5fFv8
 EXECUTOR_PRIVATE_KEY_BASE58=4NBE3...YOUR_BASE58_SECRET_KEY...
-RESEND_API_KEY=re_enterprise_live_key
+RESEND_API_KEY="mock_development_token_00000000000000"
 AUTHORIZED_DOMAIN=dao.mermail.internal
 SENDER_EMAIL=agent@dao.mermail.internal

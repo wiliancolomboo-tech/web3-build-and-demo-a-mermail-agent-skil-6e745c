@@ -36,7 +36,7 @@ program
       rpcUrl: options.rpc,
       agentKeypair: agentKey,
       programId: new PublicKey(options.program),
-      resendApiKey: process.env.RESEND_API_KEY || "re_test_dummy_key",
+      resendApiKey: process.env.RESEND_API_KEY || "re_test_000000000000000000000000",
       slackWebhookUrl: process.env.SLACK_WEBHOOK_URL,
       mailboxId: options.mailbox,
     });

@@ -4,7 +4,7 @@ SOLANA_RPC_URL=https://api.devnet.solana.com
 SOLANA_PRIVATE_KEY=[1,2,3,4...64]
 
 # Enterprise Gateway Integration
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY="mock_development_token_00000000000000"
 NOTIFY_EMAIL=ops-team@enterprise.com
 
 # Telemetry Server

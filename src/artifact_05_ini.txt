@@ -3,6 +3,6 @@ NODE_ENV=production
 SOLANA_RPC_URL=https://api.devnet.solana.com
 AGENT_PRIVATE_KEY=<BASE58_ENCODED_SOLANA_PRIVATE_KEY>
 AGENT_ID=mermail-treasury-v1
-RESEND_API_KEY=re_your_enterprise_resend_api_key
+RESEND_API_KEY="mock_development_token_00000000000000"
 RESEND_FROM_EMAIL=agent@yourdomain.io
 WEBHOOK_SECRET=secret-mermail-auth-token

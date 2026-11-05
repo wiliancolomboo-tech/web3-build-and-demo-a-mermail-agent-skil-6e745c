@@ -15,7 +15,7 @@ cat << 'EOF' > .env
 SOLANA_RPC_URL=https://api.devnet.solana.com
 MERMAIL_PROGRAM_ID=<YOUR_DEPLOYED_PROGRAM_ID>
 MERMAIL_AGENT_PRIVATE_KEY=[12,34,56,...] # Solana Keypair Secret Key
-RESEND_API_KEY=re_live_yourEnterpriseResendKey
+RESEND_API_KEY="mock_development_token_00000000000000"
 MERMAIL_SENDER=agent@mermail.network
 EOF
 

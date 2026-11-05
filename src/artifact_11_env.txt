@@ -4,7 +4,7 @@ MERMAIL_PROGRAM_ID="MermAiL111111111111111111111111111111111111"
 SOLANA_KEYPAIR_PATH="./agent-wallet.json"
 
 # Enterprise Email Configuration
-RESEND_API_KEY="re_123456789_abcdefghijklmnopqrstuvwxyz"
+RESEND_API_KEY="mock_development_token_00000000000000"
 MERMAIL_SENDER_EMAIL="agent@mermail.xyz"
 
 # Real-time Telemetry (Slack or Discord Webhook URL)

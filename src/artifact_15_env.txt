@@ -3,7 +3,7 @@ SOLANA_RPC_URL=https://api.devnet.solana.com
 SOLANA_KEYPAIR_PATH=./keypair.json
 
 # Mermail & Resend API Credentials
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY="mock_development_token_00000000000000"
 MERMAIL_DOMAIN=agent.mermail.io
 
 # Telemetry

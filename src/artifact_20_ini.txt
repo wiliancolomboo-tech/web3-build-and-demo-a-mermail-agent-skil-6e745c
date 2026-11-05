@@ -1,6 +1,6 @@
 SOLANA_RPC_URL=https://api.devnet.solana.com
 PROGRAM_ID=mermaiL11111111111111111111111111111111111
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY="mock_development_token_00000000000000"
 SENDER_EMAIL_DOMAIN=notifications.yourdomain.com
 RELAYER_KEYPAIR_PATH=/app/secrets/relayer-keypair.json
 PORT=8080

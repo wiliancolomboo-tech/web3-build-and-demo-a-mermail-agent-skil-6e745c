@@ -8,7 +8,7 @@ SENDER_EMAIL=agent-alerts@yourdomain.com
 CALLBACK_BASE_URL=https://api.yourdomain.com
 
 # Enterprise Mail Infrastructure (Resend)
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY="mock_development_token_00000000000000"
 
 # Daemon Webhook Port
 PORT=8080

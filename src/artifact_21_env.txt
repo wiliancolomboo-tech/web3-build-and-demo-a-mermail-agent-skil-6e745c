@@ -1,7 +1,7 @@
 SOLANA_RPC_URL=https://api.devnet.solana.com
 SOLANA_WS_URL=wss://api.devnet.solana.com
 MERMAIL_PROGRAM_ID=Merm111111111111111111111111111111111111111
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY="mock_development_token_00000000000000"
 SENDER_EMAIL=agent-notifier@verified.mermail.io
 AUTHORITY_KEYPAIR_PATH=./keys/authority.json
 AGENT_KEYPAIR_PATH=./keys/agent.json
